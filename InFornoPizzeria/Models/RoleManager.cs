@@ -8,6 +8,7 @@ namespace InFornoPizzeria.Models
 {
     public class RoleManager : RoleProvider
     {
+        ModelDBContext db = new ModelDBContext();
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -35,9 +36,12 @@ namespace InFornoPizzeria.Models
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username)
+        public override string[] GetRolesForUser(string userId)
         {
-            throw new NotImplementedException();
+            int utenteId = Convert.ToInt32(userId);
+            string role = db.Utenti.Where(u => u.UtenteId == utenteId).FirstOrDefault().Role;
+            string[] roles = new string[] { role };
+            return roles;
         }
 
         public override string[] GetUsersInRole(string roleName)
