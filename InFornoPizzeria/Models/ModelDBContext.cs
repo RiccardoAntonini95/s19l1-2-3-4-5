@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace InFornoPizzeria.Models
 {
-    public partial class DBContext : DbContext
+    public partial class ModelDBContext : DbContext
     {
-        public DBContext()
-            : base("name=DBContext")
+        public ModelDBContext()
+            : base("name=ModelDBContext")
         {
         }
 
