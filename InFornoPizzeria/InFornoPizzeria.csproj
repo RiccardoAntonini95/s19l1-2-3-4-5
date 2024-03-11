@@ -171,6 +171,7 @@
     <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\DettagliOrdine.cs" />
     <Compile Include="Models\Ordini.cs" />
+    <Compile Include="Models\RoleManager.cs" />
     <Compile Include="Models\Utenti.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
