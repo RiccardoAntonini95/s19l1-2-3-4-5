@@ -4,7 +4,7 @@
     <div class="hero text-white d-flex justify-content-center align-items-center">
         <div class="bg-black p-3 text-center">
             <h3>Sei già registrato?</h3>
-            <button class="btn btn-success">Registrati</button>
+            @Html.ActionLink("Registrati", "Registrati", "Login", null, new {@class = "btn btn-success"})
             @Html.ActionLink("Accedi","Index", "Login", null, new {@class = "btn btn-primary"})
         </div>
     </div>

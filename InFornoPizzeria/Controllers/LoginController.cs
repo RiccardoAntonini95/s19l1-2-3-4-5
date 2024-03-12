@@ -25,36 +25,52 @@ namespace InFornoPizzeria.Controllers
         [HttpPost]
         public ActionResult Index(Utenti utente)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["ModelDbContext"].ToString();
-            var conn = new SqlConnection(connectionString);
+            var db = new ModelDBContext();
             if (ModelState.IsValid)
             {
                 try
                 {
-                    conn.Open();
-                    var command = new SqlCommand("SELECT * FROM Utenti WHERE Username = @username AND Pass = @password", conn);
-                    command.Parameters.AddWithValue("@username", utente.Username);
-                    command.Parameters.AddWithValue("@password", utente.Password);
-                    var reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
+                    var utenteLoggato = db.Utenti.Where(model => model.Username == utente.Username && model.Password == utente.Password).FirstOrDefault();
+                    if(utenteLoggato != null)
                     {
-                        reader.Read();
-                        FormsAuthentication.SetAuthCookie(reader["UtenteId"].ToString(), true);
+                        FormsAuthentication.SetAuthCookie(utenteLoggato.Username, true);
                         return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        return View("error");
                     }
                 }
                 catch (Exception ex)
                 {
                     return View("error");
                 }
-                finally { conn.Close(); }
             }
-            return View("LoggedIn");
+            return View("Index");
+        }
+        public ActionResult Registrati()
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home"); //sei già loggato, torna alla home
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registrati(Utenti newUser)
+        {
+            var db = new ModelDBContext();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Utenti.Add(newUser);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    return View("error");
+                }
+                return RedirectToAction("Index", "Login");
+            }
+            return View() ;
         }
     }
 }

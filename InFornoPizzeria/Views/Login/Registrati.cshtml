@@ -1,11 +1,9 @@
 ﻿@model InFornoPizzeria.Models.Utenti
-
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Registrati";
 }
-
 <div class="text-center">
-    <h2>Benvenuto, effettua l'accesso per accedere ai servizi</h2>
+    <h2>Benvenuto, registrati qui</h2>
 
     @using (Html.BeginForm())
     {
@@ -19,12 +17,10 @@
         @Html.ValidationMessageFor(model => model.Password)
         <br>
         <br>
-        @Html.LabelFor(model => model.Role)
-        @Html.EditorFor(model => model.Role)
-        @Html.ValidationMessageFor(model => model.Role)
+        @Html.HiddenFor(model => model.Role, new { Value = "User" })
         <br>
         <br>
-        <button class="btn btn-primary">Login</button>
+        <button class="btn btn-primary">Registrati</button>
     }
 </div>
 
