@@ -8,6 +8,7 @@ namespace InFornoPizzeria.Controllers
 {
     public class HomeController : Controller
     {
+        //[Authorize (Roles = "Admin")]
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
