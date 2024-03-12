@@ -6,25 +6,23 @@ using System.Web.Mvc;
 
 namespace InFornoPizzeria.Controllers
 {
-    public class HomeController : Controller
+    [Authorize (Roles = "Admin")]
+    public class AdminController : Controller
     {
-        //[Authorize (Roles = "Admin")]
+        // GET: Admin
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
 
-        public ActionResult Acquista()
+        public ActionResult AggiungiProdotto()
         {
             return View();
         }
 
-        public ActionResult RiepilogoOrdine()
+        public ActionResult OrdiniConclusi()
         {
             return View();
         }
-
     }
 }

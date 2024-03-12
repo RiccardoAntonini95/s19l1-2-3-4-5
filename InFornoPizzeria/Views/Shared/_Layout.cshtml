@@ -26,14 +26,26 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Amministrazione", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Aggiungi prodotto", "AggiungiProdotto", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Evadi Ordini", "OrdiniConclusi", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    @if (User.IsInRole("User"))
+                    {
+                        <li>@Html.ActionLink("Acquista", "Acquista", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Riepilogo Ordine", "RiepilogoOrdine", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
                     @if (authCookie != null)
                     {
-                       <li>
-                          <form action="@Url.Action("Logout", "Login")" method="post">
-                              @Html.AntiForgeryToken();
-                              <button type="submit" class="btn btn-danger">Logout</button>
-                          </form>
-                       </li> 
+                        <li>
+                            <form action="@Url.Action("Logout", "Login")" method="post">
+                                @Html.AntiForgeryToken();
+                                <button type="submit" class="btn btn-danger">Logout</button>
+                            </form>
+                        </li>
+
                     }
                 </ul>
             </div>

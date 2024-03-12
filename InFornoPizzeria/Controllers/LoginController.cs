@@ -23,7 +23,7 @@ namespace InFornoPizzeria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Username, Password, Role")]Utenti utente)
+        public ActionResult Index([Bind(Include = "Username, Password ")]Utenti utente)
         {
             var db = new ModelDBContext();
             if (ModelState.IsValid)
@@ -37,7 +37,7 @@ namespace InFornoPizzeria.Controllers
                         FormsAuthentication.SetAuthCookie(utenteLoggato.UtenteId.ToString(), true);//salvo l'id ottenuto dalla select e lo passo al rolemanager
                         if(utenteLoggato.Role == "Admin")
                         {
-                            return RedirectToAction("Index", "Home"); //qua pagina admin che avrà nel controller Authorize admin
+                            return RedirectToAction("Index", "Admin"); //qua pagina admin che avrà nel controller Authorize admin
                         }
                         return RedirectToAction("Index", "Home"); //qua pagina utente per aggiungere prodotti 
                     }
@@ -60,7 +60,7 @@ namespace InFornoPizzeria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registrati([Bind(Include = "Username, Password, Role")] Utenti newUser)
+        public ActionResult Registrati([Bind(Include = "Username, Password")] Utenti newUser)
         {
             var db = new ModelDBContext();
             if (ModelState.IsValid)
@@ -87,13 +87,5 @@ namespace InFornoPizzeria.Controllers
             TempData["Message"] = "Logout effettuato con successo.";
             return RedirectToAction("Index", "Home");
         }
-
-        [Authorize (Roles = "Admin")] //funziona, qua accedo alle funzionalità admin
-        public ActionResult ProvaAdmin()
-        {
-            return View();
-        }
-
-
     }
 }
