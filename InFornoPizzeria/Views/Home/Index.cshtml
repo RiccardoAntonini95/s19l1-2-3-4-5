@@ -1,11 +1,17 @@
 ﻿<main>
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Message"]
+        </div>
+    }
     <h1 class="display-1">In Forno Pizzeria</h1>
     <h2 class="display-6">Pizza e birra a portar via</h2>
     <div class="hero text-white d-flex justify-content-center align-items-center">
         <div class="bg-black p-3 text-center">
             <h3>Sei già registrato?</h3>
-            @Html.ActionLink("Registrati", "Registrati", "Login", null, new {@class = "btn btn-success"})
-            @Html.ActionLink("Accedi","Index", "Login", null, new {@class = "btn btn-primary"})
+            @Html.ActionLink("Registrati", "Registrati", "Login", null, new { @class = "btn btn-success" })
+            @Html.ActionLink("Accedi", "Index", "Login", null, new { @class = "btn btn-primary" })
         </div>
     </div>
 </main>

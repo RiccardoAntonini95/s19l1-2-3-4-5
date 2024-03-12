@@ -33,7 +33,7 @@ namespace InFornoPizzeria.Controllers
                     var utenteLoggato = db.Utenti.Where(model => model.Username == utente.Username && model.Password == utente.Password).FirstOrDefault();
                     if(utenteLoggato != null)
                     {
-                        FormsAuthentication.SetAuthCookie(utenteLoggato.UtenteId.ToString(), true);
+                        FormsAuthentication.SetAuthCookie(utenteLoggato.UtenteId.ToString(), true);//salvo l'id ottenuto dalla select e lo passo al rolemanager
                         if(utenteLoggato.Role == "Admin")
                         {
                             return RedirectToAction("Index", "Home"); //qua pagina admin che avrà nel controller Authorize admin
@@ -75,6 +75,14 @@ namespace InFornoPizzeria.Controllers
                 return RedirectToAction("Index", "Login");
             }
             return View() ;
+        }
+
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            TempData["Message"] = "Logout effettuato con successo.";
+            return RedirectToAction("Index", "Home");
         }
 
         [Authorize (Roles = "Admin")] //funziona, qua accedo alle funzionalità admin
