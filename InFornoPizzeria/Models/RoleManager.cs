@@ -38,8 +38,7 @@ namespace InFornoPizzeria.Models
 
         public override string[] GetRolesForUser(string userId)
         {
-            int utenteId = Convert.ToInt32(userId);
-            string role = db.Utenti.Where(u => u.UtenteId == utenteId).FirstOrDefault().Role;
+            string role = db.Utenti.Where(u => u.UtenteId.ToString() == userId).FirstOrDefault().Role;
             string[] roles = new string[] { role };
             return roles;
         }

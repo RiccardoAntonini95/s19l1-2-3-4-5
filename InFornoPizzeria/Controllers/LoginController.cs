@@ -12,7 +12,6 @@ namespace InFornoPizzeria.Controllers
 {
     public class LoginController : Controller
     {
-
         public ActionResult Index()
         {
             if (HttpContext.User.Identity.IsAuthenticated)
@@ -33,8 +32,12 @@ namespace InFornoPizzeria.Controllers
                     var utenteLoggato = db.Utenti.Where(model => model.Username == utente.Username && model.Password == utente.Password).FirstOrDefault();
                     if(utenteLoggato != null)
                     {
-                        FormsAuthentication.SetAuthCookie(utenteLoggato.Username, true);
-                        return RedirectToAction("Index", "Home");
+                        FormsAuthentication.SetAuthCookie(utenteLoggato.UtenteId.ToString(), true);
+                        if(utenteLoggato.Role == "Admin")
+                        {
+                            return RedirectToAction("Index", "Home"); //qua pagina admin che avrà nel controller Authorize admin
+                        }
+                        return RedirectToAction("Index", "Home"); //qua pagina utente per aggiungere prodotti 
                     }
                 }
                 catch (Exception ex)
@@ -48,7 +51,7 @@ namespace InFornoPizzeria.Controllers
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home"); //sei già loggato, torna alla home
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -72,5 +75,13 @@ namespace InFornoPizzeria.Controllers
             }
             return View() ;
         }
+
+        [Authorize (Roles = "Admin")]
+        public ActionResult ProvaAdmin()
+        {
+            return View();
+        }
+
+
     }
 }
