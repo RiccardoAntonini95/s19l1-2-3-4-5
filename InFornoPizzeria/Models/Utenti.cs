@@ -26,8 +26,6 @@ namespace InFornoPizzeria.Models
         [StringLength(30)]
         public string Password { get; set; }
 
-        [Required]
-        [StringLength(10)]
         public string Role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

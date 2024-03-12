@@ -29,6 +29,7 @@ namespace InFornoPizzeria.Controllers
             {
                 try
                 {
+                    //query select che ottiene il record giusto 
                     var utenteLoggato = db.Utenti.Where(model => model.Username == utente.Username && model.Password == utente.Password).FirstOrDefault();
                     if(utenteLoggato != null)
                     {
@@ -76,7 +77,7 @@ namespace InFornoPizzeria.Controllers
             return View() ;
         }
 
-        [Authorize (Roles = "Admin")]
+        [Authorize (Roles = "Admin")] //funziona, qua accedo alle funzionalità admin
         public ActionResult ProvaAdmin()
         {
             return View();
