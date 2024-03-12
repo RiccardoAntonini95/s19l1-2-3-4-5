@@ -7,6 +7,8 @@
 
     @using (Html.BeginForm())
     {
+        @Html.AntiForgeryToken();
+
         @Html.LabelFor(model => model.Username)
         @Html.EditorFor(model => model.Username)
         @Html.ValidationMessageFor(model => model.Username)

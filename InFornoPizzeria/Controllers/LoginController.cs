@@ -22,7 +22,8 @@ namespace InFornoPizzeria.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Utenti utente)
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "Username, Password, Role")]Utenti utente)
         {
             var db = new ModelDBContext();
             if (ModelState.IsValid)
@@ -58,7 +59,8 @@ namespace InFornoPizzeria.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registrati(Utenti newUser)
+        [ValidateAntiForgeryToken]
+        public ActionResult Registrati([Bind(Include = "Username, Password, Role")] Utenti newUser)
         {
             var db = new ModelDBContext();
             if (ModelState.IsValid)
@@ -78,6 +80,7 @@ namespace InFornoPizzeria.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
