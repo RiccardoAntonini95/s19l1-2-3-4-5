@@ -1,0 +1,42 @@
+﻿@model InFornoPizzeria.Models.Articoli
+
+@{
+    ViewBag.Title = "AggiungiArticolo";
+}
+
+<h2>Aggiungi un prodotto</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+
+    @Html.LabelFor(model => model.Nome)
+    @Html.EditorFor(model => model.Nome)
+    @Html.ValidationMessageFor(model => model.Nome)
+    <br>
+    <br>
+    @Html.LabelFor(model => model.Foto)
+    @Html.EditorFor(model => model.Foto)
+    @Html.ValidationMessageFor(model => model.Foto)
+    <br>
+    <br>
+    @Html.LabelFor(model => model.PrezzoVendita)
+    @Html.EditorFor(model => model.PrezzoVendita)
+    @Html.ValidationMessageFor(model => model.PrezzoVendita)
+    <br>
+    <br>
+    @Html.LabelFor(model => model.TempoConsegna)
+    @Html.EditorFor(model => model.TempoConsegna)
+    @Html.ValidationMessageFor(model => model.TempoConsegna)
+    <br>
+    <br>
+    @Html.LabelFor(model => model.Ingredienti)
+    @Html.EditorFor(model => model.Ingredienti)
+    @Html.ValidationMessageFor(model => model.Ingredienti)
+    <br>
+    <br>
+    <button class="btn btn-primary">Aggiungi articolo</button>
+}
+
+@*TODO: Form aggiunta prodotti*@
+

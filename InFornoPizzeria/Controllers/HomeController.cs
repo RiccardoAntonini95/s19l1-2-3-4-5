@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InFornoPizzeria.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,11 +17,24 @@ namespace InFornoPizzeria.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Authorize (Roles = "User")]
         public ActionResult Acquista()
         {
+            var db = new ModelDBContext();
+            try
+            {
+               List<Articoli> listaArticoli = db.Articoli.ToList();
+                return View(listaArticoli);
+            }
+            catch (Exception ex)
+            {
+
+            }
             return View();
         }
 
+        [Authorize (Roles = "User")]
         public ActionResult RiepilogoOrdine()
         {
             return View();

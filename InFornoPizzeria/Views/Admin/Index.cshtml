@@ -5,10 +5,15 @@
 
 <h2>Admin</h2>
 
+<p>Di quale funzionalità vuoi usufruire?</p>
+
+@Html.ActionLink("Aggiungi articolo", "AggiungiArticolo", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Evadi Ordini", "OrdiniConclusi", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
+
 @*
     TODO: Link che portano ad altre action:
     -Form aggiunta articoli
     -Pagina lista ordini da evadere
-    -Richieste asincrone     
+    -Richieste asincrone, numero totale ordini evasi e totale incassato in una giornata
 *@
 

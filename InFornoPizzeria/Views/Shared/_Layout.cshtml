@@ -29,7 +29,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Amministrazione", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Aggiungi prodotto", "AggiungiProdotto", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Aggiungi articolo", "AggiungiArticolo", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Evadi Ordini", "OrdiniConclusi", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                     }
                     @if (User.IsInRole("User"))

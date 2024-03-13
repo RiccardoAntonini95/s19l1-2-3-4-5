@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\Assets\css\StyleSheet.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -247,7 +248,7 @@
     <Content Include="Views\Login\ProvaAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\OrdiniConclusi.cshtml" />
-    <Content Include="Views\Admin\AggiungiProdotto.cshtml" />
+    <Content Include="Views\Admin\AggiungiArticolo.cshtml" />
     <Content Include="Views\Home\RiepilogoOrdine.cshtml" />
     <Content Include="Views\Home\Acquista.cshtml" />
   </ItemGroup>

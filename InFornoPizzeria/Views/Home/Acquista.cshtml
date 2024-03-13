@@ -5,4 +5,18 @@
 
 <h2>Acquista</h2>
 
+@foreach (var prodotto in Model)
+{
+    <div class="card" style="width: 18rem;">
+        <img src="@prodotto.Foto" class="card-img-top" alt="pic">
+        <div class="card-body">
+            <h5 class="card-title">@prodotto.Nome <span class="badge text-bg-success">@prodotto.PrezzoVendita &euro;</span></h5>
+            <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
+            <p class="card-text">Tempo di consegna stimato: @prodotto.TempoConsegna minuti.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+}
+
+
 @*TODO: Lista prodotti acquistabili*@

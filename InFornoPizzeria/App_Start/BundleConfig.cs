@@ -21,6 +21,7 @@ namespace InFornoPizzeria
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Assets/css/StyleSheet.css",
                       "~/Content/site.css"));
         }
     }

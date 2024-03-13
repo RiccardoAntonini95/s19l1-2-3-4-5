@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InFornoPizzeria.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,10 +16,32 @@ namespace InFornoPizzeria.Controllers
             return View();
         }
 
-        public ActionResult AggiungiProdotto()
+        public ActionResult AggiungiArticolo()
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AggiungiArticolo([Bind(Include = "Nome, Foto, PrezzoVendita, TempoConsegna, Ingredienti")]Articoli nuovoArticolo)
+        {
+            var db = new ModelDBContext();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Articoli.Add(nuovoArticolo);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    return View("error");
+                }
+                return RedirectToAction("Index", "Admin");
+            }
+            return View();
+        }
+        
 
         public ActionResult OrdiniConclusi()
         {

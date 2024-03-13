@@ -76,7 +76,7 @@ namespace InFornoPizzeria.Controllers
                 }
                 return RedirectToAction("Index", "Login");
             }
-            return View() ;
+            return View();
         }
 
         [HttpPost]
