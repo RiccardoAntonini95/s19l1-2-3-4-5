@@ -9,7 +9,6 @@ namespace InFornoPizzeria.Controllers
 {
     public class HomeController : Controller
     {
-        //[Authorize (Roles = "Admin")]
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
@@ -36,6 +35,7 @@ namespace InFornoPizzeria.Controllers
 
         [HttpPost]
         [Authorize (Roles = "User")]
+        [ValidateAntiForgeryToken]
         public ActionResult AggiungiAlCarrello(Carrello nuovoArticolo)
         {
             Carrello ArticoloDaAggiungere = new Carrello
@@ -73,7 +73,8 @@ namespace InFornoPizzeria.Controllers
 
         [HttpPost]
         [Authorize(Roles = "User")]
-        public ActionResult ConfermaOrdine(string indirizzo, string noteCliente)
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfermaOrdine([Bind(Include = "indirizzo, noteCliente")]string indirizzo, string noteCliente)
         {
             ModelDBContext db = new ModelDBContext();
             var ordine = new Ordini

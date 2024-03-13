@@ -31,6 +31,8 @@
 
     using (Html.BeginForm("ConfermaOrdine", "Home"))
     {
+        @Html.AntiForgeryToken();
+
         <label for="indirizzo">Indirizzo: </label>
         <input type="text" name="indirizzo" id="indirizzo" required/>
         <br>

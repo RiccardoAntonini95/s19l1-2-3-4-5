@@ -9,6 +9,7 @@
 {
     using (Html.BeginForm("AggiungiAlCarrello", "Home"))
     {
+        @Html.AntiForgeryToken();
         <input type="hidden" name="ArticoloId" value="@prodotto.ArticoloId" />
         <input type="hidden" name="Nome" value="@prodotto.Nome" />
         <input type="hidden" name="Foto" value="@prodotto.Foto" />
