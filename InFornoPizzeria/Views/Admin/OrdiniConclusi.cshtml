@@ -7,3 +7,27 @@
 
 @*TODO: Lista ordini segnabili come evasi*@
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome Cliente</th>
+            <th>Stato Ordine</th>
+            <th>Articoli Ordinati</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ordine in Model)
+        {
+            using (Html.BeginForm("EvadiOrdine", "Admin"))
+                {
+                 <tr>
+                     <input type="hidden" name="ordineId" value="@ordine.OrdineId" />
+                     <td>@ordine.Utenti.Username</td>
+                     <td>@ordine.StatoOrdine</td>
+                     <td><button type="submit" class="btn btn-danger">Evadi</button></td>
+                 </tr>
+                }
+            
+        }
+    </tbody>
+</table>

@@ -41,11 +41,31 @@ namespace InFornoPizzeria.Controllers
             }
             return View();
         }
-        
 
+        [HttpGet]
         public ActionResult OrdiniConclusi()
         {
+            var db = new ModelDBContext();
+            try
+            {
+                var ordini = db.Ordini.Include("DettagliOrdine").Include("Utenti").ToList();
+                return View(ordini);
+            }
+            catch (Exception ex)
+            {
+
+            }
             return View();
+        }
+
+        public ActionResult EvadiOrdine(int ordineId)
+        {
+            var db = new ModelDBContext();
+            var ordineDaEvadere = db.Ordini.Find(ordineId);
+            ordineDaEvadere.StatoOrdine = "Ordine evaso";
+            db.Entry(ordineDaEvadere).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("OrdiniConclusi", "Admin");
         }
     }
 }
