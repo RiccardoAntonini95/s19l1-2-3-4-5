@@ -7,16 +7,25 @@
 
 @foreach (var prodotto in Model)
 {
-    <div class="card" style="width: 18rem;">
-        <img src="@prodotto.Foto" class="card-img-top" alt="pic">
-        <div class="card-body">
-            <h5 class="card-title">@prodotto.Nome <span class="badge text-bg-success">@prodotto.PrezzoVendita &euro;</span></h5>
-            <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
-            <p class="card-text">Tempo di consegna stimato: @prodotto.TempoConsegna minuti.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    using (Html.BeginForm("AggiungiAlCarrello", "Home"))
+    {
+        <input type="hidden" name="ArticoloId" value="@prodotto.ArticoloId" />
+        <input type="hidden" name="Nome" value="@prodotto.Nome" />
+        <input type="hidden" name="Foto" value="@prodotto.Foto" />
+        <input type="hidden" name="PrezzoVendita" value="@prodotto.PrezzoVendita" />
+
+        <div class="card" style="width: 18rem;">
+            <img src="@prodotto.Foto" class="card-img-top" alt="pic">
+            <div class="card-body">
+                <h5 class="card-title">@prodotto.Nome <span class="badge text-bg-success">@prodotto.PrezzoVendita &euro;</span></h5>
+                <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
+                <p class="card-text">Tempo di consegna stimato: @prodotto.TempoConsegna minuti.</p>
+                <label for="Quantita">Quantità: </label>
+                <input type="number" name="Quantita" id="Quantita" />
+                <button type="submit">Aggiungi al carrello</button>
+            </div>
         </div>
-    </div>
+    }
 }
 
 
-@*TODO: Lista prodotti acquistabili*@

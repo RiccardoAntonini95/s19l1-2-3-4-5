@@ -2,8 +2,51 @@
 @{
     ViewBag.Title = "RiepilogoOrdine";
 }
+@*@(Model.Sum(item => (item.Articoli.Prezzo * item.Quantita)) + Model.FirstOrDefault().Ordini.CostoCons)*@
+<h2>Riepilogo Ordine</h2>
 
-<h2>RiepilogoOrdine</h2>
+@if (Session["Carrello"] != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Foto</th>
+                <th>Prezzo</th>
+                <th>Quantità</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var articolo in Session["Carrello"] as List<InFornoPizzeria.Models.Carrello>)
+            {
+                <tr>
+                    <td>@articolo.Nome</td>
+                    <td><img src="@articolo.Foto" alt="Foto articolo" style="max-width: 100px;" /></td>
+                    <td>@articolo.PrezzoVendita &euro;</td>
+                    <td>@articolo.Quantita</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    using (Html.BeginForm("ConfermaOrdine", "Home"))
+    {
+        <label for="indirizzo">Indirizzo: </label>
+        <input type="text" name="indirizzo" id="indirizzo" required/>
+        <br>
+        <br>
+        <label for="noteCliente">Note Aggiuntive: </label>
+        <input type="text" name="noteCliente" id="noteCliente" />
+        <br>
+        <br>
+        <button type="submit" class="btn btn-warning">Concludi ordine</button>
+    }
+    //QUA FORM CON INPUT HIDDEN CHE FA DUE QUERY INSERT INTO coi valori che ho
+}
+else
+{
+    <p>Il carrello è vuoto.</p>
+}
 
 @*TODO: Riepilogo carrello*@
 

@@ -170,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Articoli.cs" />
+    <Compile Include="Models\Carrello.cs" />
     <Compile Include="Models\DettagliOrdine.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\Ordini.cs" />
