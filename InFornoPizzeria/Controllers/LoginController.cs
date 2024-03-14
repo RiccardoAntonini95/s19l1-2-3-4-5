@@ -83,7 +83,7 @@ namespace InFornoPizzeria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
-            //SVUOTA LA SESSION SE ESISTE
+            Session.Clear();
             FormsAuthentication.SignOut();
             TempData["Message"] = "Logout effettuato con successo.";
             return RedirectToAction("Index", "Home");

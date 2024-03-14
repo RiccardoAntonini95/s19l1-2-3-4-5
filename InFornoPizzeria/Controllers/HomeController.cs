@@ -92,15 +92,13 @@ namespace InFornoPizzeria.Controllers
 
             int OrdineId = ordine.OrdineId;
 
-            var dettaglioOrdine = new DettagliOrdine(); //inizializzo l'oggetto che creerò
-
-            foreach (var dettagliOrdine in Session["Carrello"] as List<Carrello>)
+            foreach (var dettaglio in Session["Carrello"] as List<Carrello>)
             {
-                dettaglioOrdine = new DettagliOrdine
+                var dettaglioOrdine = new DettagliOrdine
                 {
-                    ArticoloId = dettagliOrdine.ArticoloId,
+                    ArticoloId = dettaglio.ArticoloId,
                     OrdineId = OrdineId,
-                    Quantita = dettagliOrdine.Quantita,
+                    Quantita = dettaglio.Quantita,
                     Indirizzo = indirizzo,
                     NoteCliente = noteCliente
                 };

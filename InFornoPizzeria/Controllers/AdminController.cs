@@ -48,7 +48,7 @@ namespace InFornoPizzeria.Controllers
             var db = new ModelDBContext();
             try
             {
-                var ordini = db.Ordini.Include("DettagliOrdine").Include("Utenti").ToList();
+                var ordini = db.Ordini.Include("DettagliOrdine").Include("Utenti").OrderBy(o => o.StatoOrdine).ToList();
                 return View(ordini);
             }
             catch (Exception ex)
@@ -77,8 +77,6 @@ namespace InFornoPizzeria.Controllers
 
         public ActionResult GetIncassiTotaliPerData(DateTime dataDaCercare)
         {
-
-            // Esempio di query LINQ per ottenere la somma dei totali degli ordini per una data specifica
                 var dbContext = new ModelDBContext();
             decimal sommaTotali = dbContext.Ordini
                                            .Where(o => o.DataOrdine.Year == dataDaCercare.Year &&
@@ -89,7 +87,7 @@ namespace InFornoPizzeria.Controllers
                                            .Sum() ?? 0;
                 var result = new { sommaTotali = sommaTotali };
                 return Json(result, JsonRequestBehavior.AllowGet);
-                //SELECT SUM(Totale)  FROM Ordini WHERE CONVERT(date, DataOrdine) = '2024-03-14';
+                //SELECT SUM(Totale)  FROM Ordini WHERE CONVERT(date, DataOrdine) = '2024-03-14'; <----- query da effetuare 
 
         }
     }

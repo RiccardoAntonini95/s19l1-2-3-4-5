@@ -4,29 +4,35 @@
 }
 
 <h2>Acquista</h2>
-
-@foreach (var prodotto in Model)
-{
-    using (Html.BeginForm("AggiungiAlCarrello", "Home"))
+<div class="row">
+    @foreach (var prodotto in Model)
     {
-        @Html.AntiForgeryToken();
-        <input type="hidden" name="ArticoloId" value="@prodotto.ArticoloId" />
-        <input type="hidden" name="Nome" value="@prodotto.Nome" />
-        <input type="hidden" name="Foto" value="@prodotto.Foto" />
-        <input type="hidden" name="PrezzoVendita" value="@prodotto.PrezzoVendita" />
+        <div class="col-4">
+            <div class="card h-100" style="width: 18rem;">
+                @using (Html.BeginForm("AggiungiAlCarrello", "Home"))
+                {
+                    @Html.AntiForgeryToken();
+                    <input type="hidden" name="ArticoloId" value="@prodotto.ArticoloId" />
+                    <input type="hidden" name="Nome" value="@prodotto.Nome" />
+                    <input type="hidden" name="Foto" value="@prodotto.Foto" />
+                    <input type="hidden" name="PrezzoVendita" value="@prodotto.PrezzoVendita" />
 
-        <div class="card" style="width: 18rem;">
-            <img src="@prodotto.Foto" class="card-img-top" alt="pic">
-            <div class="card-body">
-                <h5 class="card-title">@prodotto.Nome <span class="badge text-bg-success">@prodotto.PrezzoVendita &euro;</span></h5>
-                <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
-                <p class="card-text">Tempo di consegna stimato: @prodotto.TempoConsegna minuti.</p>
-                <label for="Quantita">Quantità: </label>
-                <input type="number" name="Quantita" id="Quantita" />
-                <button type="submit">Aggiungi al carrello</button>
+                    <img src="@prodotto.Foto" class="card-img-top" alt="pic">
+                    <div class="card-body">
+                        <h5 class="card-title">@prodotto.Nome <span class="badge text-bg-success">@prodotto.PrezzoVendita &euro;</span></h5>
+                        <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
+                        <p class="card-text">Tempo di consegna stimato: @prodotto.TempoConsegna minuti.</p>
+                        <label for="Quantita">Quantità: </label>
+                        <input type="number" name="Quantita" id="Quantita" min="0" />
+                        <button type="submit" class="btn btn-success">Aggiungi al carrello</button>
+                    </div>
+                }
             </div>
         </div>
+
     }
-}
+</div>
+
+
 
 
