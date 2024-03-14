@@ -38,14 +38,17 @@ namespace InFornoPizzeria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AggiungiAlCarrello(Carrello nuovoArticolo)
         {
+            decimal importoIniziale = 0;
             Carrello ArticoloDaAggiungere = new Carrello
             {
                 ArticoloId = nuovoArticolo.ArticoloId,
                 Nome = nuovoArticolo.Nome,
                 Foto = nuovoArticolo.Foto,
                 PrezzoVendita = (nuovoArticolo.PrezzoVendita * nuovoArticolo.Quantita),
-                Quantita = nuovoArticolo.Quantita
+                Quantita = nuovoArticolo.Quantita,
+                Totale = (importoIniziale + nuovoArticolo.PrezzoVendita)
             };
+            importoIniziale = ArticoloDaAggiungere.Totale;
 
             // Recupera la lista del carrello dalla sessione, o crea una nuova lista se non esiste
             List<Carrello> listaCarrello = Session["Carrello"] as List<Carrello>;
@@ -82,6 +85,7 @@ namespace InFornoPizzeria.Controllers
                 UtenteId = Convert.ToInt32(User.Identity.Name),
                 StatoOrdine = "In lavorazione",
                 DataOrdine = DateTime.Now,
+                Totale = (decimal)Session["Totale"]
             };
             db.Ordini.Add(ordine);
             db.SaveChanges();

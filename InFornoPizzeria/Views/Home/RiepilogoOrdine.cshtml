@@ -1,6 +1,9 @@
 ﻿
 @{
     ViewBag.Title = "RiepilogoOrdine";
+    decimal totale = 0;
+    var carrello = Session["Carrello"] as List<InFornoPizzeria.Models.Carrello>;
+
 }
 @*@(Model.Sum(item => (item.Articoli.Prezzo * item.Quantita)) + Model.FirstOrDefault().Ordini.CostoCons)*@
 <h2>Riepilogo Ordine</h2>
@@ -25,14 +28,19 @@
                     <td>@articolo.PrezzoVendita &euro;</td>
                     <td>@articolo.Quantita</td>
                 </tr>
+                totale += articolo.PrezzoVendita;
+            }
+            @{ 
+                Session["Totale"] = totale; //salva il totale nella session per passarlo agli ordini
             }
         </tbody>
     </table>
+    <p>Importo totale: @totale &euro;</p>
 
-    using (Html.BeginForm("ConfermaOrdine", "Home"))
-    {
+
+        using (Html.BeginForm("ConfermaOrdine", "Home"))
+        {
         @Html.AntiForgeryToken();
-
         <label for="indirizzo">Indirizzo: </label>
         <input type="text" name="indirizzo" id="indirizzo" required/>
         <br>
@@ -49,5 +57,4 @@ else
     <p>Il carrello è vuoto.</p>
 }
 
-@*TODO: Importo totale a schermo*@
 

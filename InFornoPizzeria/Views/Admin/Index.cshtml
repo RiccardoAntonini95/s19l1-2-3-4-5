@@ -10,10 +10,47 @@
 @Html.ActionLink("Aggiungi articolo", "AggiungiArticolo", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
 @Html.ActionLink("Evadi Ordini", "OrdiniConclusi", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
 
-@*
-    TODO: Link che portano ad altre action:
-    -Form aggiunta articoli
-    -Pagina lista ordini da evadere
-    -Richieste asincrone, numero totale ordini evasi e totale incassato in una giornata
-*@
+<p>Ottieni il numero totale di ordini evasi: </p>
+<button class="btn btn-dark" id="btnOrdiniEvasi" type="button">Ottieni numero ordini evasi</button>
+<div id="risultatoOrdiniEvasi"></div>
+
+<p>Ottieni il totale incassato in una giornata:</p>
+<div id="risultatoIncassi"></div>
+<input type="date" name="dataDaCercare" />
+<button class="btn btn-dark" id="btnIncassi">Ottieni totale incassato in data</button>
+
+@section scripts {
+    <script>
+        var divRisultato = document.getElementById("risultatoOrdiniEvasi")
+        document.getElementById("btnOrdiniEvasi").addEventListener("click", function () {
+            fetch("/Admin/GetOrdiniEvasi")
+                .then(response => response.json())
+                .then(data => {
+                    divRisultato.innerText = data.count + " ordini evasi in totale"
+                })
+                .catch(error => {
+                    console.error("Si è verificato un errore durante il recupero dei dati:", error);
+                    alert("Si è verificato un errore durante il recupero dei dati. Controlla la console per ulteriori informazioni.");
+                });
+        });
+
+
+
+        var divIncassi = document.getElementById("risultatoIncassi")
+        document.getElementById("btnIncassi").addEventListener("click", function () {
+            var dataDaCercare = document.getElementsByName("dataDaCercare")[0].value;
+            fetch("/Admin/GetIncassiTotaliPerData?dataDaCercare=" + dataDaCercare)
+                .then(response => response.json())
+                .then(data => {
+                    divIncassi.innerText = data.sommaTotali + `${'\u20AC'} totale incassi`
+                })
+                .catch(error => {
+                    console.error("Si è verificato un errore durante il recupero dei dati:", error);
+                    alert("Si è verificato un errore durante il recupero dei dati. Controlla la console per ulteriori informazioni.");
+                });
+        });
+    </script>
+
+}
+
 

@@ -5,14 +5,13 @@
 
 <h2>Ordini Conclusi</h2>
 
-@*TODO: Lista ordini segnabili come evasi*@
-
 <table class="table">
     <thead>
         <tr>
             <th>Nome Cliente</th>
             <th>Stato Ordine</th>
-            <th>Articoli Ordinati</th>
+            <th>Data Ordine</th>
+            <th>Evadi Ordine</th>
         </tr>
     </thead>
     <tbody>
@@ -24,10 +23,10 @@
                      <input type="hidden" name="ordineId" value="@ordine.OrdineId" />
                      <td>@ordine.Utenti.Username</td>
                      <td>@ordine.StatoOrdine</td>
+                     <td>@ordine.DataOrdine</td>
                      <td><button type="submit" class="btn btn-danger">Evadi</button></td>
                  </tr>
-                }
-            
+                }      
         }
     </tbody>
 </table>

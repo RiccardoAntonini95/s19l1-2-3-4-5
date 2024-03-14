@@ -12,5 +12,6 @@ namespace InFornoPizzeria.Models
         public string Foto { get; set; }
         public decimal PrezzoVendita { get; set; }
         public int Quantita { get; set; }
+        public decimal Totale { get; set; }
     }
 }

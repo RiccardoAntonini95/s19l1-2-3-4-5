@@ -53,7 +53,7 @@ namespace InFornoPizzeria.Controllers
             }
             catch (Exception ex)
             {
-
+                return View("Error");
             }
             return View();
         }
@@ -66,6 +66,32 @@ namespace InFornoPizzeria.Controllers
             db.Entry(ordineDaEvadere).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("OrdiniConclusi", "Admin");
+        }
+
+        public ActionResult GetOrdiniEvasi()
+        {
+            var db = new ModelDBContext();
+            int count = db.Ordini.Count(o => o.StatoOrdine == "Ordine evaso");
+            var result = new { count = count };
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetIncassiTotaliPerData(DateTime dataDaCercare)
+        {
+
+            // Esempio di query LINQ per ottenere la somma dei totali degli ordini per una data specifica
+                var dbContext = new ModelDBContext();
+            decimal sommaTotali = dbContext.Ordini
+                                           .Where(o => o.DataOrdine.Year == dataDaCercare.Year &&
+                                                       o.DataOrdine.Month == dataDaCercare.Month &&
+                                                       o.DataOrdine.Day == dataDaCercare.Day)
+                                           .Select(o => (decimal?)o.Totale) // Cast a decimal? per gestire i valori nulli
+                                           .DefaultIfEmpty(0) // Imposta il valore predefinito a 0 se non ci sono elementi
+                                           .Sum() ?? 0;
+                var result = new { sommaTotali = sommaTotali };
+                return Json(result, JsonRequestBehavior.AllowGet);
+                //SELECT SUM(Totale)  FROM Ordini WHERE CONVERT(date, DataOrdine) = '2024-03-14';
+
         }
     }
 }
