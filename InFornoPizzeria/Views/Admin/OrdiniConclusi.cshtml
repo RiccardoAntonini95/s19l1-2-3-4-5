@@ -18,15 +18,23 @@
         @foreach (var ordine in Model)
         {
             using (Html.BeginForm("EvadiOrdine", "Admin"))
-                {
-                 <tr>
-                     <input type="hidden" name="ordineId" value="@ordine.OrdineId" />
-                     <td>@ordine.Utenti.Username</td>
-                     <td>@ordine.StatoOrdine</td>
-                     <td>@ordine.DataOrdine</td>
-                     <td><button type="submit" class="btn btn-danger">Evadi</button></td>
-                 </tr>
-                }      
+            {
+                <tr>
+                    <input type="hidden" name="ordineId" value="@ordine.OrdineId" />
+                    <td>@ordine.Utenti.Username</td>
+                    <td>@ordine.StatoOrdine</td>
+                    <td>@ordine.DataOrdine</td>
+
+                    @if (ordine.StatoOrdine == "Ordine evaso")
+                    {
+                        <td>Ordine evaso</td>
+                    }
+                    else
+                    {
+                        <td><button type="submit" class="btn btn-danger">Evadi</button></td>
+                    }
+                </tr>
+            }
         }
     </tbody>
 </table>

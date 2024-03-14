@@ -55,7 +55,6 @@ namespace InFornoPizzeria.Controllers
             {
                 return View("Error");
             }
-            return View();
         }
 
         public ActionResult EvadiOrdine(int ordineId)
