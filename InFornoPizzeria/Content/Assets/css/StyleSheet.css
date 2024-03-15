@@ -68,6 +68,10 @@ body {
     background-color: brown;
 }
 
+label  {
+    font-weight: bold;
+}
+
 .btn:hover {
     box-shadow: 0.2rem 0.2rem 0 black;
     transform: translate(-0.2rem, -0.2rem);
@@ -132,6 +136,7 @@ input {
 .card {
     box-shadow: none;
     transition: box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -143,5 +148,9 @@ input {
     object-fit: cover;
 }
 
-/*PAGINA AGGIUNGI PRODOTTO ADMIN*/
+.card-img-top:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;   
+}
+
 

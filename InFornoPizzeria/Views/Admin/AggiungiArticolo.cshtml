@@ -11,26 +11,31 @@
     @Html.AntiForgeryToken();
 
     @Html.LabelFor(model => model.Nome, "Nome: ")
+    <br>
     @Html.EditorFor(model => model.Nome)
     @Html.ValidationMessageFor(model => model.Nome)
     <br>
     <br>
     @Html.LabelFor(model => model.Foto, "Foto: ")
+    <br>
     @Html.EditorFor(model => model.Foto)
     @Html.ValidationMessageFor(model => model.Foto)
     <br>
     <br>
     @Html.LabelFor(model => model.PrezzoVendita, "Prezzo di vendita: ")
+    <br>
     @Html.EditorFor(model => model.PrezzoVendita)
     @Html.ValidationMessageFor(model => model.PrezzoVendita)
     <br>
     <br>
     @Html.LabelFor(model => model.TempoConsegna, "Tempo di consegna: ")
+    <br>
     @Html.EditorFor(model => model.TempoConsegna)
     @Html.ValidationMessageFor(model => model.TempoConsegna)
     <br>
     <br>
     @Html.LabelFor(model => model.Ingredienti, "Ingredienti: ")
+    <br>
     @Html.EditorFor(model => model.Ingredienti)
     @Html.ValidationMessageFor(model => model.Ingredienti)
     <br>

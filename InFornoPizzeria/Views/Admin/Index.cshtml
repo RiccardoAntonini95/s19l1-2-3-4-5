@@ -2,19 +2,19 @@
 @{
     ViewBag.Title = "Index";
 }
-<p class="display-5">Di quale funzionalità vuoi usufruire?</p>
+<p class="display-5 fw-bold">Di quale funzionalità vuoi usufruire?</p>
 
 @Html.ActionLink("Aggiungi articolo", "AggiungiArticolo", "Admin", new { area = "" }, new { @class = "btn" })
 @Html.ActionLink("Evadi Ordini", "OrdiniConclusi", "Admin", new { area = "" }, new { @class = "btn" })
 
-<p class="display-6">Ottieni il numero totale di ordini evasi: </p>
+<p class="display-6 fw-bold">Ottieni il numero totale di ordini evasi: </p>
 <button class="btn" id="btnOrdiniEvasi" type="button">Ottieni numero ordini evasi</button>
-<div id="risultatoOrdiniEvasi"></div>
+<div id="risultatoOrdiniEvasi" class="fw-bold text-danger"></div>
 
-<p class="display-6">Ottieni il totale incassato in una giornata:</p>
-<div id="risultatoIncassi"></div>
+<p class="display-6 fw-bold">Ottieni il totale incassato in una giornata:</p>
 <input type="date" name="dataDaCercare" />
 <button class="btn" id="btnIncassi">Ottieni totale incassato in data</button>
+<div id="risultatoIncassi" class="fw-bold text-danger"></div>
 
 @section scripts {
     <script>

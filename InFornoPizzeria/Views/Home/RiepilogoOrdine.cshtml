@@ -6,7 +6,7 @@
 
 }
 
-<h2>Riepilogo Ordine</h2>
+<h2 class="display-5 fw-bold">Riepilogo Ordine</h2>
 
 @if (Session["Carrello"] != null)
 {
@@ -30,26 +30,28 @@
                 </tr>
                 totale += articolo.PrezzoVendita;
             }
-            @{ 
+            @{
                 Session["Totale"] = totale; //salva il totale nella session per passarlo agli ordini
             }
         </tbody>
     </table>
-    <p>Importo totale: @totale &euro;</p>
+    <p class="fw-bold fs-4">Importo totale: @totale &euro;</p>
 
 
-        using (Html.BeginForm("ConfermaOrdine", "Home"))
-        {
+    using (Html.BeginForm("ConfermaOrdine", "Home"))
+    {
         @Html.AntiForgeryToken();
         <label for="indirizzo">Indirizzo: </label>
-        <input type="text" name="indirizzo" id="indirizzo" required/>
+        <br>
+        <input type="text" name="indirizzo" id="indirizzo" required />
         <br>
         <br>
         <label for="noteCliente">Note Aggiuntive: </label>
+        <br>
         <input type="text" name="noteCliente" id="noteCliente" />
         <br>
         <br>
-        <button type="submit" class="btn btn-warning">Concludi ordine</button>
+        <button type="submit" class="btn">Concludi ordine</button>
     }
 }
 else
