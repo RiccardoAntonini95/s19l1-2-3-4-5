@@ -6,6 +6,12 @@
 
 }
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["Message"]
+    </div>
+}
 <h2 class="display-5 fw-bold">Riepilogo Ordine</h2>
 
 @if (Session["Carrello"] != null)
@@ -36,11 +42,17 @@
         </tbody>
     </table>
     <p class="fw-bold fs-4">Importo totale: @totale &euro;</p>
+    using (Html.BeginForm("SvuotaCarrello", "Home"))
+    {
+        @Html.AntiForgeryToken()
+        <button class="btn" type="submit">Svuota Carrello</button>
+    }
+
 
 
     using (Html.BeginForm("ConfermaOrdine", "Home"))
     {
-        @Html.AntiForgeryToken();
+        @Html.AntiForgeryToken()
         <label for="indirizzo">Indirizzo: </label>
         <br>
         <input type="text" name="indirizzo" id="indirizzo" required />

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace InFornoPizzeria.Controllers
 {
@@ -111,6 +112,15 @@ namespace InFornoPizzeria.Controllers
             TempData["Message"] = "Ordine effettuato con successo!";
 
             return RedirectToAction("Acquista", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SvuotaCarrello()
+        {
+            Session.Clear();
+            TempData["Message"] = "Carrello svuotato!";
+            return RedirectToAction("RiepilogoOrdine", "Home");
         }
 
 
