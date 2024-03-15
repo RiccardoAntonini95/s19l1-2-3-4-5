@@ -63,6 +63,7 @@ namespace InFornoPizzeria.Controllers
 
             // Aggiorna la lista del listaCarrello nella sessione
             Session["Carrello"] = listaCarrello;
+            TempData["Message"] = "Prodotto aggiunto al carrello";
 
             // Redirect alla pagina del carrello o a qualsiasi altra pagina
             return RedirectToAction("Acquista", "Home");
@@ -107,7 +108,9 @@ namespace InFornoPizzeria.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            TempData["Message"] = "Ordine effettuato con successo!";
+
+            return RedirectToAction("Acquista", "Home");
         }
 
 

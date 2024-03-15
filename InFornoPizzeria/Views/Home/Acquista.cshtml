@@ -3,35 +3,57 @@
     ViewBag.Title = "Acquista";
 }
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
+    </div>
+}
+
+<div class="loader-container">
+    <div class="loader"></div>
+</div>
+
 <h2>Acquista</h2>
 <div class="row">
     @foreach (var prodotto in Model)
     {
-        <div class="col-4">
-            <div class="card h-100 my-3">
-                @using (Html.BeginForm("AggiungiAlCarrello", "Home"))
-                {
-                    @Html.AntiForgeryToken();
-                    <input type="hidden" name="ArticoloId" value="@prodotto.ArticoloId" />
-                    <input type="hidden" name="Nome" value="@prodotto.Nome" />
-                    <input type="hidden" name="Foto" value="@prodotto.Foto" />
-                    <input type="hidden" name="PrezzoVendita" value="@prodotto.PrezzoVendita" />
+        <div class="col-4 my-3">
+            <div class="card h-100">
+                <img src="@prodotto.Foto" class="card-img-top" alt="pic">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@prodotto.Nome <span class="badge text-bg-success">@prodotto.PrezzoVendita &euro;</span></h5>
+                    <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
+                    <p class="card-text">Tempo di consegna stimato: @prodotto.TempoConsegna minuti.</p>
 
-                    <img src="@prodotto.Foto" class="card-img-top" alt="pic">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@prodotto.Nome <span class="badge text-bg-success">@prodotto.PrezzoVendita &euro;</span></h5>
-                        <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
-                        <p class="card-text">Tempo di consegna stimato: @prodotto.TempoConsegna minuti.</p>
+                </div>
+                <div class="card-footer">
+                    @using (Html.BeginForm("AggiungiAlCarrello", "Home"))
+                    {
+                        @Html.AntiForgeryToken();
+                        <input type="hidden" name="ArticoloId" value="@prodotto.ArticoloId" />
+                        <input type="hidden" name="Nome" value="@prodotto.Nome" />
+                        <input type="hidden" name="Foto" value="@prodotto.Foto" />
+                        <input type="hidden" name="PrezzoVendita" value="@prodotto.PrezzoVendita" />
                         <label for="Quantita">Quantità: </label>
                         <input type="number" name="Quantita" id="Quantita" min="0" />
                         <button type="submit" class="btn btn-success my-2">Aggiungi al carrello</button>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
 
     }
 </div>
+
+@section scripts{
+    <script>
+        const containerLoader = document.querySelector(".loader-container");
+        window.addEventListener("load", () => {
+            containerLoader.classList.add("hidden")
+        })
+    </script>
+}
 
 
 

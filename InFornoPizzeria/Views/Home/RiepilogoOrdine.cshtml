@@ -5,7 +5,7 @@
     var carrello = Session["Carrello"] as List<InFornoPizzeria.Models.Carrello>;
 
 }
-@*@(Model.Sum(item => (item.Articoli.Prezzo * item.Quantita)) + Model.FirstOrDefault().Ordini.CostoCons)*@
+
 <h2>Riepilogo Ordine</h2>
 
 @if (Session["Carrello"] != null)

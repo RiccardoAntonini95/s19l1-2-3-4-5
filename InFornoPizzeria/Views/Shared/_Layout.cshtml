@@ -25,7 +25,6 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Amministrazione", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>

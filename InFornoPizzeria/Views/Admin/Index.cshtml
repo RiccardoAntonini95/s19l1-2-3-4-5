@@ -2,19 +2,16 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Admin</h2>
-
-<p>Di quale funzionalità vuoi usufruire?</p>
+<p class="display-5">Di quale funzionalità vuoi usufruire?</p>
 
 @Html.ActionLink("Aggiungi articolo", "AggiungiArticolo", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
 @Html.ActionLink("Evadi Ordini", "OrdiniConclusi", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
 
-<p>Ottieni il numero totale di ordini evasi: </p>
+<p class="display-6">Ottieni il numero totale di ordini evasi: </p>
 <button class="btn btn-dark" id="btnOrdiniEvasi" type="button">Ottieni numero ordini evasi</button>
 <div id="risultatoOrdiniEvasi"></div>
 
-<p>Ottieni il totale incassato in una giornata:</p>
+<p class="display-6">Ottieni il totale incassato in una giornata:</p>
 <div id="risultatoIncassi"></div>
 <input type="date" name="dataDaCercare" />
 <button class="btn btn-dark" id="btnIncassi">Ottieni totale incassato in data</button>

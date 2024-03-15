@@ -6,21 +6,36 @@
         </div>
     }
     @if (User.IsInRole("Admin"))
-       {
-         <h1>Benvenuto Admin</h1>
-       }
+    {
+        <h1>Benvenuto Admin</h1>
+    }
     @if (User.IsInRole("User"))
-       {
-         <h1>Benvenuto Utente</h1>
-       }
+    {
+        <h1>🍕 Fame improvvisa? 🍕</h1>
+    }
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
 
     <h1 class="display-1">In Forno Pizzeria</h1>
     <h2 class="display-6">Pizza e birra a portar via</h2>
     <div class="hero text-white d-flex justify-content-center align-items-center">
-        <div class="bg-black p-3 text-center">
-            <h3>Sei già registrato?</h3>
-            @Html.ActionLink("Registrati", "Registrati", "Login", null, new { @class = "btn btn-success" })
-            @Html.ActionLink("Accedi", "Index", "Login", null, new { @class = "btn btn-primary" })
-        </div>
+        @if (!User.Identity.IsAuthenticated)
+         {
+            <div class="login-btn-container p-3 text-center">
+                <h3>Sei già registrato?</h3>
+                @Html.ActionLink("Registrati", "Registrati", "Login", null, new { @class = "btn btn-success" })
+                @Html.ActionLink("Accedi", "Index", "Login", null, new { @class = "btn btn-primary" })
+            </div>
+         }
     </div>
 </main>
+
+@section scripts{
+    <script>
+        const containerLoader = document.querySelector(".loader-container");
+        window.addEventListener("load", () => {
+            containerLoader.classList.add("hidden")
+        })
+    </script>
+}
