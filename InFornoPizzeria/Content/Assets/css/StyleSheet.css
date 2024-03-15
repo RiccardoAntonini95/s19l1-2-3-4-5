@@ -1,4 +1,36 @@
-﻿
+﻿svg text {
+    stroke-width: 1;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+svg text.text-body{
+    stroke : white;
+    animation: 3s infinite alternate logoAnimated
+}
+
+@keyframes logoAnimated{
+    0%{
+        fill: transparent;
+        stroke: white;
+        stroke-width: 1;
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 0 32%;
+    }
+    50%{
+        fill: transparent;
+        stroke: white;
+        stroke-width: 1;
+    }
+    100%{
+        fill: white;
+        stroke: transparent;
+        stroke-width: 0;
+        stroke-dashoffset: -25%;
+        stroke-dasharray: 32% 0;
+    }
+}
+
 .hero {
     height: 60vh;
     background-image: url("https://cdn.pixabay.com/photo/2016/04/09/09/22/pizza-1317699_960_720.jpg");
