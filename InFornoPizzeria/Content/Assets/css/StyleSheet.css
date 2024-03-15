@@ -1,4 +1,26 @@
-﻿svg text {
+﻿/*VARIABILI*/
+:root {
+    --colore-primario: #e74c3c;
+    --colore-secondario: #f39c12;
+}
+
+/*NAVBAR*/
+
+.navbar {
+    background-color: var(--colore-secondario);
+}
+
+.nav-link {
+    color: var(--colore-primario);
+    font-weight: bold;
+}
+
+.nav-link:hover{
+    transform: scale(1.1);
+    transition: 0.4s;
+}
+
+svg text {
     stroke-width: 1;
     font-size: 1.2em;
     letter-spacing: 2px;
@@ -31,34 +53,27 @@ svg text.text-body{
     }
 }
 
-.hero {
-    height: 60vh;
-    background-image: url("https://cdn.pixabay.com/photo/2016/04/09/09/22/pizza-1317699_960_720.jpg");
-    background-size: cover;
+/*HOME PAGE*/
+.login-btn-container {
+    background-color: #0000008a
+}
+
+/*GENERALE*/
+body {
+    background-color: #ff8c0099;
 }
 
 .btn {
     font-weight: bold;
+    background-color: brown;
 }
-
-.card {
-    box-shadow: none;
-    transition: box-shadow 0.3s ease;
-}
-
-    .card:hover {
-        box-shadow: -1px 2px 9px 1px black;
-    }
 
 .btn:hover {
     box-shadow: 0.2rem 0.2rem 0 black;
     transform: translate(-0.2rem, -0.2rem);
-    transition: 0.3s
-}
-
-.card-img-top {
-    height: 150px;
-    object-fit: cover;
+    transition: 0.3s;
+    background-color: brown;
+    color: white;
 }
 
 .loader-container {
@@ -70,10 +85,10 @@ svg text.text-body{
     place-content: center;
 }
 
-    .loader-container.hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
+.loader-container.hidden {
+     opacity: 0;
+     visibility: hidden;
+}
 
 .loader {
     width: 4rem;
@@ -85,6 +100,19 @@ svg text.text-body{
     animation: .8s ease infinite alternate spinner;
 }
 
+input {
+    background-color: var(--colore-secondario);
+    border-color: white;
+    box-shadow: inset 0px 0px 2px var(--colore-primario);
+}
+
+    input:focus {
+        transition: 0.4s;
+        background-color: var(--colore-primario);
+        box-shadow: 0px 0px 6px var(--colore-primario);
+        outline: 0;
+    }
+
 @keyframes spinner {
     0% {
         transform: rotate(0deg) scale(1)
@@ -94,33 +122,26 @@ svg text.text-body{
         transform: rotate(1turn) scale(1.2)
     }
 }
-
-.login-btn-container {
-    background-color: #0000008a
+/*PAGINA ACQUISTA UTENTE*/
+.hero {
+    height: 60vh;
+    background-image: url("https://cdn.pixabay.com/photo/2016/04/09/09/22/pizza-1317699_960_720.jpg");
+    background-size: cover;
 }
 
-input[type="number"] {
-    background-color: blanchedalmond;
-    border-color: #2b161b;
-    box-shadow: inset 0px 0px 2px #2b161b;
+.card {
+    box-shadow: none;
+    transition: box-shadow 0.3s ease;
 }
 
-input[type="number"]:focus {
-    transition: 0.4s;
-    background-color: pink;
-    box-shadow: 0px 0px 6px #2b161b;
-    outline: 0;
+.card:hover {
+   box-shadow: -1px 2px 9px 1px black;
 }
 
-input[type="date"] {
-    background-color: blanchedalmond;
-    border-color: #2b161b;
-    box-shadow: inset 0px 0px 2px #2b161b;
+.card-img-top {
+    height: 150px;
+    object-fit: cover;
 }
 
-    input[type="date"]:focus {
-        transition: 0.4s;
-        background-color: pink;
-        box-shadow: 0px 0px 6px #2b161b;
-        outline: 0;
-    }
+/*PAGINA AGGIUNGI PRODOTTO ADMIN*/
+

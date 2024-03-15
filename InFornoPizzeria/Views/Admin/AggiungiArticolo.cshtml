@@ -10,32 +10,32 @@
 {
     @Html.AntiForgeryToken();
 
-    @Html.LabelFor(model => model.Nome)
+    @Html.LabelFor(model => model.Nome, "Nome: ")
     @Html.EditorFor(model => model.Nome)
     @Html.ValidationMessageFor(model => model.Nome)
     <br>
     <br>
-    @Html.LabelFor(model => model.Foto)
+    @Html.LabelFor(model => model.Foto, "Foto: ")
     @Html.EditorFor(model => model.Foto)
     @Html.ValidationMessageFor(model => model.Foto)
     <br>
     <br>
-    @Html.LabelFor(model => model.PrezzoVendita)
+    @Html.LabelFor(model => model.PrezzoVendita, "Prezzo di vendita: ")
     @Html.EditorFor(model => model.PrezzoVendita)
     @Html.ValidationMessageFor(model => model.PrezzoVendita)
     <br>
     <br>
-    @Html.LabelFor(model => model.TempoConsegna)
+    @Html.LabelFor(model => model.TempoConsegna, "Tempo di consegna: ")
     @Html.EditorFor(model => model.TempoConsegna)
     @Html.ValidationMessageFor(model => model.TempoConsegna)
     <br>
     <br>
-    @Html.LabelFor(model => model.Ingredienti)
+    @Html.LabelFor(model => model.Ingredienti, "Ingredienti: ")
     @Html.EditorFor(model => model.Ingredienti)
     @Html.ValidationMessageFor(model => model.Ingredienti)
     <br>
     <br>
-    <button class="btn btn-primary">Aggiungi articolo</button>
+    <button class="btn">Aggiungi articolo</button>
 }
 
 @*TODO: Form aggiunta prodotti*@

@@ -15,14 +15,13 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
         <div class="container">
             <svg viewBox="0 0 150 20" width="200" height="40">
                 <text x="50%" y="50%" dy=".32rem" text-anchor="middle" class="text-body">
-                  In Forno
+                  In Forno 🍕
                 </text>
             </svg>
-            @*@Html.ActionLink("In Forno ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -45,8 +44,8 @@
                     {
                         <li>
                             <form action="@Url.Action("Logout", "Login")" method="post">
-                                @Html.AntiForgeryToken();
-                                <button type="submit" class="btn btn-danger">Logout</button>
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn">Logout</button>
                             </form>
                         </li>
 
@@ -59,7 +58,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Pizzeria In Forno</p>
         </footer>
     </div>
 

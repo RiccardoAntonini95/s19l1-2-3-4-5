@@ -11,17 +11,17 @@
     {
         @Html.AntiForgeryToken();
 
-        @Html.LabelFor(model => model.Username)
+        @Html.LabelFor(model => model.Username, "Username: ")
         @Html.EditorFor(model => model.Username)
         @Html.ValidationMessageFor(model => model.Username)
         <br>
         <br>
-        @Html.LabelFor(model => model.Password)
+        @Html.LabelFor(model => model.Password, "Password: ")
         @Html.EditorFor(model => model.Password)
         @Html.ValidationMessageFor(model => model.Password)
         <br>
         <br>
-        <button class="btn btn-primary">Login</button>
+        <button class="btn">Login</button>
     }
 </div>
 
