@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
+
 namespace InFornoPizzeria.Controllers
 {
     public class HomeController : Controller
@@ -110,6 +111,7 @@ namespace InFornoPizzeria.Controllers
             db.SaveChanges();
 
             TempData["Message"] = "Ordine effettuato con successo!";
+            Session.Clear();
 
             return RedirectToAction("Acquista", "Home");
         }

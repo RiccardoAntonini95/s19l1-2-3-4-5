@@ -4,12 +4,14 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    <meta name="description" content="Ordina la tua pizza InForno Pizzeria" />
+    <meta name="keywords" content="Pizza,ordinare,inforno" />
+    <title>@ViewBag.Title - In Forno Pizzeria</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -57,7 +59,7 @@
     <div class="mx-3 text-center">
         @RenderBody()
         <hr />
-        <footer>
+        <footer> @*LASCIALO FISSO IN BASSO*@
             <p class="fw-bold">&copy; @DateTime.Now.Year - Pizzeria In Forno</p>
         </footer>
     </div>

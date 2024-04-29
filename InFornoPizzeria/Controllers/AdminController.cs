@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
 namespace InFornoPizzeria.Controllers
 {
-    [Authorize (Roles = "Admin")]
+    //[Authorize (Roles = "Admin")]
     public class AdminController : Controller
     {
         // GET: Admin
@@ -72,7 +73,7 @@ namespace InFornoPizzeria.Controllers
             var db = new ModelDBContext();
             int count = db.Ordini.Count(o => o.StatoOrdine == "Ordine evaso");
             var result = new { count = count };
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(result);
         }
 
         public ActionResult GetIncassiTotaliPerData(DateTime dataDaCercare)
